@@ -36,6 +36,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
         header.textLabel?.textColor = .white
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 14, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
+        header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         configure();
+        getTrendingMovies()
     }
     
     private func configure() {
@@ -41,11 +42,20 @@ class HomeViewController: UIViewController {
             UIBarButtonItem(image: UIImage(systemName: "play.rectangle"), style: .done, target: self, action: nil)]
         navigationController?.navigationBar.tintColor = .white
     }
-    
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         HomeTableView.frame = view.bounds
     }
     
+    private func getTrendingMovies() {
+        APICaller.share.getTrendingMovies { result in
+            switch result {
+            case .success(let movie) :
+                print(movie)
+            case .failure(let error) :
+                print(error)
+            }
+        }
+    }
 }
