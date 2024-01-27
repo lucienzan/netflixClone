@@ -9,6 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    // MARK: - Properties
+    var sectionTitles: [String] = ["Trending Movies","Popular","Trending Tv","Upcoming Movies","Top Rated"];
+    
     private let HomeTableView : UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.reuseIdentifier)
@@ -36,7 +39,7 @@ class HomeViewController: UIViewController {
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil),
             UIBarButtonItem(image: UIImage(systemName: "play.rectangle"), style: .done, target: self, action: nil)]
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .white
     }
     
 

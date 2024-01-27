@@ -13,9 +13,9 @@ class HeaderView: UIView {
     private func button(text: String) -> UIButton {
         let button = UIButton()
         button.setTitle(text, for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderColor = UIColor.white.cgColor
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

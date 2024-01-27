@@ -9,7 +9,7 @@ import UIKit
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return sectionTitles.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,6 +29,17 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else {return}
+        header.textLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
+        header.textLabel?.textColor = .white
+        header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 14, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
