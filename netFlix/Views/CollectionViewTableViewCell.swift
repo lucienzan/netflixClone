@@ -11,12 +11,14 @@ class CollectionViewTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = "collectionViewCell"
     
+    public var title: [Movie] = [Movie]()
+    
     private let collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 140, height: 200)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(TitleCollectionViewCell.self, forCellWithReuseIdentifier: TitleCollectionViewCell.identifier)
         return collectionView
     }()
 
@@ -37,4 +39,11 @@ class CollectionViewTableViewCell: UITableViewCell {
         collectionView.frame = contentView.bounds
     }
     
+    public func configure(model: [Movie]) {
+        self.title = model
+        DispatchQueue.main.async{
+            [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
 }

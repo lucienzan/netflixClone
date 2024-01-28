@@ -8,9 +8,17 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     // MARK: - Properties
     var sectionTitles: [String] = ["Trending Movies","Popular","Trending Tv","Upcoming Movies","Top Rated"];
+    
+    enum Sections : Int {
+        case TrendingMovie = 0
+        case TrendingTv = 1
+        case Popular = 2
+        case Upcoming = 3
+        case TopRated = 4
+    }
     
     private let HomeTableView : UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -23,7 +31,6 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         configure();
-        getTrendingMovies()
     }
     
     private func configure() {
@@ -42,20 +49,10 @@ class HomeViewController: UIViewController {
             UIBarButtonItem(image: UIImage(systemName: "play.rectangle"), style: .done, target: self, action: nil)]
         navigationController?.navigationBar.tintColor = .white
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         HomeTableView.frame = view.bounds
     }
     
-    private func getTrendingMovies() {
-        APICaller.share.getTrendingMovies { result in
-            switch result {
-            case .success(let movie) :
-                print(movie)
-            case .failure(let error) :
-                print(error)
-            }
-        }
-    }
 }

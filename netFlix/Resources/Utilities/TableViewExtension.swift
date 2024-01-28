@@ -20,6 +20,55 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.reuseIdentifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
+        switch indexPath.section {
+        case Sections.TrendingMovie.rawValue:
+            APICaller.share.getTrendingMovies { result in
+                switch result{
+                case .success(let movie) :
+                    cell.configure(model: movie)
+                case .failure(let error) :
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.TrendingTv.rawValue:
+            APICaller.share.getTrendingTvs { result in
+                switch result{
+                case .success(let movie) :
+                    cell.configure(model: movie)
+                case .failure(let error) :
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.Popular.rawValue:
+            APICaller.share.getPopular { result in
+                switch result{
+                case .success(let movie) :
+                    cell.configure(model: movie)
+                case .failure(let error) :
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.Upcoming.rawValue:
+            APICaller.share.getUpcomingMovies { result in
+                switch result{
+                case .success(let movie) :
+                    cell.configure(model: movie)
+                case .failure(let error) :
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.TopRated.rawValue:
+            APICaller.share.getTopRated { result in
+                switch result{
+                case .success(let movie) :
+                    cell.configure(model: movie)
+                case .failure(let error) :
+                    print(error.localizedDescription)
+                }
+            }
+        default:
+            return UITableViewCell()
+        }
         return cell
     }
     
@@ -31,6 +80,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         return 30
     }
     
+    // Header Title section
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else {return}
         header.textLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
@@ -43,6 +93,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         return sectionTitles[section]
     }
     
+    // set the top nav bar not sticky
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let defaultOffset = view.safeAreaInsets.top
         let offset = scrollView.contentOffset.y + defaultOffset
