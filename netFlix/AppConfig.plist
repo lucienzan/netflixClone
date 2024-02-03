@@ -2,7 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>YoutubeAPI</key>
+	<string>Your Youtube API</string>
 	<key>APIKey</key>
-	<string>b2e6379f9378fc83fddf8b31ecf755eb</string>
+	<string>Your TMDB API</string>
 </dict>
 </plist>

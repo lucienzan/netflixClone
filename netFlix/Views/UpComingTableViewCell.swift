@@ -14,6 +14,7 @@ class UpComingTableViewCell: UITableViewCell {
     private let ucTitle : UILabel = {
         let label = UILabel();
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
