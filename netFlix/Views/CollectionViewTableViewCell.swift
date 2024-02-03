@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol CollectionViewTableViewCellDelegate: AnyObject {
+    func collectionViewTableViewDidTapCell(_cell: CollectionViewTableViewCell, model: YoutubeReviewViewModel)
+}
+
 class CollectionViewTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = "collectionViewCell"
+    
+    weak var delegate : CollectionViewTableViewCellDelegate?
     
     public var title: [Movie] = [Movie]()
     

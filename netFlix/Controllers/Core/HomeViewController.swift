@@ -39,7 +39,6 @@ class HomeViewController: UIViewController {
         HomeTableView.dataSource = self
         let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
         HomeTableView.tableHeaderView = headerView
-        
         // header logo
         var logoView =  UIImage(named: "logo")
         logoView = logoView?.withRenderingMode(.alwaysOriginal)

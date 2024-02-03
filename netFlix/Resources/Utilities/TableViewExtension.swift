@@ -7,7 +7,8 @@
 
 import UIKit
 
-extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource, CollectionViewTableViewCellDelegate {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
     }
@@ -20,6 +21,8 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.reuseIdentifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
+        cell.delegate = self
+        
         switch indexPath.section {
         case Sections.TrendingMovie.rawValue:
             APICaller.share.getTrendingMovies { result in
@@ -101,4 +104,12 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
     
+    func collectionViewTableViewDidTapCell(_cell: CollectionViewTableViewCell, model: YoutubeReviewViewModel) {
+        DispatchQueue.main.async{
+            [weak self] in
+            let vc = MovieReviewViewController();
+            vc.configure(with: model)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
