@@ -11,6 +11,9 @@
 		0417FC972B664929009FF8C0 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417FC962B664929009FF8C0 /* MovieViewModel.swift */; };
 		0417FC992B66496A009FF8C0 /* UpComingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417FC982B66496A009FF8C0 /* UpComingTableViewCell.swift */; };
 		0417FC9B2B66774F009FF8C0 /* SearchTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417FC9A2B66774F009FF8C0 /* SearchTableViewExtension.swift */; };
+		0426CBAC2B6FA43500252513 /* NetflixCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0426CBAA2B6FA43500252513 /* NetflixCoreData.xcdatamodeld */; };
+		0426CBAE2B6FA86A00252513 /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426CBAD2B6FA86A00252513 /* DataPersistenceManager.swift */; };
+		0426CBB02B6FB13700252513 /* DownloadViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426CBAF2B6FB13700252513 /* DownloadViewExtension.swift */; };
 		042B78FE2B64CE3A009A422B /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 042B78FD2B64CE3A009A422B /* AppConfig.plist */; };
 		042B79012B64CEB2009A422B /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B79002B64CEB2009A422B /* APICaller.swift */; };
 		042B79062B64E0CC009A422B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B79052B64E0CC009A422B /* Movie.swift */; };
@@ -45,6 +48,9 @@
 		0417FC962B664929009FF8C0 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		0417FC982B66496A009FF8C0 /* UpComingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingTableViewCell.swift; sourceTree = "<group>"; };
 		0417FC9A2B66774F009FF8C0 /* SearchTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewExtension.swift; sourceTree = "<group>"; };
+		0426CBAB2B6FA43500252513 /* NetflixCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NetflixCoreData.xcdatamodel; sourceTree = "<group>"; };
+		0426CBAD2B6FA86A00252513 /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
+		0426CBAF2B6FB13700252513 /* DownloadViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewExtension.swift; sourceTree = "<group>"; };
 		042B78FD2B64CE3A009A422B /* AppConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppConfig.plist; sourceTree = "<group>"; };
 		042B79002B64CEB2009A422B /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		042B79052B64E0CC009A422B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				042B79002B64CEB2009A422B /* APICaller.swift */,
+				0426CBAD2B6FA86A00252513 /* DataPersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 				04FDE3C62B5CE91F00733B1E /* Info.plist */,
 				04FDE3C12B5CE91F00733B1E /* Assets.xcassets */,
 				042B78FD2B64CE3A009A422B /* AppConfig.plist */,
+				0426CBAA2B6FA43500252513 /* NetflixCoreData.xcdatamodeld */,
 			);
 			path = netFlix;
 			sourceTree = "<group>";
@@ -216,6 +224,7 @@
 				0417FC942B662F2B009FF8C0 /* UpComingTableViewExtension.swift */,
 				0417FC9A2B66774F009FF8C0 /* SearchTableViewExtension.swift */,
 				045FA0B02B6E2F4300296FE5 /* SearchResultCollectionExtension.swift */,
+				0426CBAF2B6FB13700252513 /* DownloadViewExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 				045FA0B32B6E505E00296FE5 /* YoutubeMovie.swift in Sources */,
 				042B79062B64E0CC009A422B /* Movie.swift in Sources */,
 				045FA0AF2B6E11E100296FE5 /* SearchResultViewController.swift in Sources */,
+				0426CBAC2B6FA43500252513 /* NetflixCoreData.xcdatamodeld in Sources */,
 				042B790A2B6501FE009A422B /* TitleCollectionViewCell.swift in Sources */,
 				04FDE3D72B5CEE7A00733B1E /* SearchViewController.swift in Sources */,
 				04FDE3BD2B5CE91E00733B1E /* MainTabBarViewController.swift in Sources */,
@@ -316,6 +326,7 @@
 				0417FC952B662F2B009FF8C0 /* UpComingTableViewExtension.swift in Sources */,
 				04FDE3E02B5D029400733B1E /* CollectionViewTableViewCell.swift in Sources */,
 				04FDE3BB2B5CE91E00733B1E /* SceneDelegate.swift in Sources */,
+				0426CBAE2B6FA86A00252513 /* DataPersistenceManager.swift in Sources */,
 				04FDE3E42B5D16DF00733B1E /* HeaderView.swift in Sources */,
 				04FDE3D52B5CEE6D00733B1E /* DownloadViewController.swift in Sources */,
 				045FA0B52B6E5BFB00296FE5 /* MovieReviewViewController.swift in Sources */,
@@ -323,6 +334,7 @@
 				04FDE3D22B5CEE5700733B1E /* HomeViewController.swift in Sources */,
 				045FA0B12B6E2F4300296FE5 /* SearchResultCollectionExtension.swift in Sources */,
 				045FA0B72B6E660B00296FE5 /* YoutubeReviewViewModel.swift in Sources */,
+				0426CBB02B6FB13700252513 /* DownloadViewExtension.swift in Sources */,
 				0417FC9B2B66774F009FF8C0 /* SearchTableViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +578,19 @@
 			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0426CBAA2B6FA43500252513 /* NetflixCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0426CBAB2B6FA43500252513 /* NetflixCoreData.xcdatamodel */,
+			);
+			currentVersion = 0426CBAB2B6FA43500252513 /* NetflixCoreData.xcdatamodel */;
+			path = NetflixCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 04FDE3AD2B5CE91E00733B1E /* Project object */;
 }

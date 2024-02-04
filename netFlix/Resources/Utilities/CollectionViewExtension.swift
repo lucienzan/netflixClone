@@ -34,4 +34,25 @@ extension CollectionViewTableViewCell : UICollectionViewDelegate, UICollectionVi
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil){
+            _ in
+            let downloadAction = UIAction(title: "Download", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) {
+                _ in
+               // to save it into coredata
+                let model = self.title[indexPath.row]
+                DataPersistenceManager.shared.downloadMovieWith(model: model) { result in
+                    switch result {
+                    case .success() :
+                        NotificationCenter.default.post(name: NSNotification.Name("downloaded"), object: nil)
+                    case .failure(let error) :
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [downloadAction])
+        }
+        return config
+    }
 }

@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol SeachResultDelegateProtocal: AnyObject {
+    func searchViewTableViewDidTapCell(model: YoutubeReviewViewModel)
+}
+
 class SearchResultViewController: UIViewController {
 
     public var movie : [Movie] = [Movie]()
     
+    public weak var delegate : SeachResultDelegateProtocal?
+
     public let searchResultCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout();
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 26, height: 200)

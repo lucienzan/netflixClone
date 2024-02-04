@@ -1,16 +1,15 @@
 //
-//  SearchTableViewExtension.swift
+//  DownloadViewExtension.swift
 //  netFlix
 //
-//  Created by Daniel on 1/28/24.
+//  Created by Daniel on 2/4/24.
 //
-
 import UIKit
 
-extension SearchViewController : UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, SeachResultDelegateProtocal {
+extension DownloadViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleModel.count
+        return self.titleModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -23,6 +22,23 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource, UIS
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete :
+            DataPersistenceManager.shared.deleteData(model: titleModel[indexPath.row]) { [weak self] result in
+                switch result {
+                case .success() : break
+                case .failure(let error):
+                    print (error.localizedDescription)
+                }
+                self?.titleModel.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+         default:
+            break
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -42,36 +58,6 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource, UIS
             case .failure(let error) :
                 print(error.localizedDescription)
             }
-        }
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchbar = searchView.searchBar
-        guard let query = searchbar.text,
-              !query.trimmingCharacters(in: .whitespaces).isEmpty,
-              query.trimmingCharacters(in: .whitespaces).count >= 3,
-              let resultController = searchView.searchResultsController as? SearchResultViewController else {
-            return
-        }
-        resultController.delegate = self
-        APICaller.share.getSearchMovies(with: query) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let movie) :
-                    resultController.movie = movie
-                    resultController.searchResultCollectionView.reloadData()
-                case .failure(let error) :
-                    return print(error.localizedDescription)
-                }
-            }
-        }
-    }
-    
-    func searchViewTableViewDidTapCell(model: YoutubeReviewViewModel) {
-        DispatchQueue.main.async{ [weak self] in
-            let vc = MovieReviewViewController()
-            vc.configure(with: model)
-            self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
