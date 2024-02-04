@@ -7,6 +7,7 @@
 
 import UIKit
 
+// custom delegate for preview
 protocol CollectionViewTableViewCellDelegate: AnyObject {
     func collectionViewTableViewDidTapCell(_cell: CollectionViewTableViewCell, model: YoutubeReviewViewModel)
 }

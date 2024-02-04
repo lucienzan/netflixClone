@@ -85,4 +85,8 @@ class HeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configureHeaderView(with model: MovieViewModel) {
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(model.imagePath)") else {return}
+        imageView.sd_setImage(with: url, completed: nil)
+    }
 }
